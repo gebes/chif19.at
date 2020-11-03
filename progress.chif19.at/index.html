@@ -5,54 +5,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CHIF19 Progress Tracker</title>
-    <style>
-        span,
-        h1 {
-            font-family: Arial, Helvetica, sans-serif;
-            color: white;
-            line-height: 0;
-
-        }
-
-        #category {
-            padding-bottom: 32px;
-        }
-    </style>
+    <link rel="stylesheet" href="../style.css">
 </head>
 
-<body style="background-color: black;" >
+<body style="background-color: black;">
 
-<div style="padding: 1%;">
+    <div class="padding">
 
-
-    <div id="category">
-        <h1 id="countdownTitle1"></h1>  
-        <span id="countdown1"></span>
+        <font style="color: white;">
+            <div class="category">
+                <h2 id="countdownTitle1"></h2>
+                <span id="countdown1"></span>
+            </div>
+            <div class="category">
+                <h2 id="countdownTitle2"></h2>
+                <span id="countdown2"></span>
+            </div>
+            <div class="category">
+                <h2 id="countdownTitle3"></h2>
+                <span id="countdown3"></span>
+            </div>
+            <div class="category">
+                <h2 id="countdownTitle4"></h2>
+                <span id="countdown4"></span>
+            </div>
+            <div class="category">
+                <h2 id="countdownTitle5"></h2>
+                <span id="countdown5"></span>
+            </div>
+        </font>
     </div>
-    <div id="category">
-        <h1 id="countdownTitle2"></h1>
-        <span id="countdown2"></span>
-    </div>
-    <div id="category">
-        <h1 id="countdownTitle3"></h1>
-        <span id="countdown3"></span>
-    </div>
-    <div id="category">
-        <h1 id="countdownTitle4"></h1>
-        <span id="countdown4"></span>
-    </div>
-    <div id="category">
-        <h1 id="countdownTitle5"></h1>
-        <span id="countdown5"></span>
-    </div>
-</div>
 
     <script>
 
         function timer(i) {
             let end = getEndDate(i);
             let now = nowInSeconds();
-            const seconds = Math.round((end - now)/1000);
+            const seconds = Math.round((end - now) / 1000);
 
             let isCurrentYear = getStartDate(i) < nowInSeconds() && nowInSeconds() < getEndDate(i)
 
