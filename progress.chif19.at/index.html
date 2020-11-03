@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHIF19 Progress Tracker</title>
+    <style>
+        span,
+        h1 {
+            font-family: Arial, Helvetica, sans-serif;
+            color: white;
+            line-height: 0;
+
+        }
+
+        #category {
+            padding-bottom: 32px;
+        }
+    </style>
+</head>
+
+<body style="background-color: black;" >
+
+<div style="padding: 1%;">
+
+
+    <div id="category">
+        <h1 id="countdownTitle1"></h1>
+        <span id="countdown1"></span>
+    </div>
+    <div id="category">
+        <h1 id="countdownTitle2"></h1>
+        <span id="countdown2"></span>
+    </div>
+    <div id="category">
+        <h1 id="countdownTitle3"></h1>
+        <span id="countdown3"></span>
+    </div>
+    <div id="category">
+        <h1 id="countdownTitle4"></h1>
+        <span id="countdown4"></span>
+    </div>
+    <div id="category">
+        <h1 id="countdownTitle5"></h1>
+        <span id="countdown5"></span>
+    </div>
+</div>
+
+    <script>
+
+        function timer(i) {
+            let end = getEndDate(i);
+            let now = nowInSeconds();
+            const seconds = end - now;
+
+            let isCurrentYear = getStartDate(i) < nowInSeconds() && nowInSeconds() < getEndDate(i)
+
+            let days = Math.floor(seconds / 24 / 60 / 60);
+            let hoursLeft = Math.floor((seconds) - (days * 86400));
+            let hours = Math.floor(hoursLeft / 3600);
+            let minutesLeft = Math.floor((hoursLeft) - (hours * 3600));
+            let minutes = Math.floor(minutesLeft / 60);
+            let remainingSeconds = seconds % 60;
+
+            if (nowInSeconds() < getStartDate(i))
+                return;
+
+
+            document.getElementById('countdownTitle' + i).innerHTML = i + "CHIF19";
+            if (seconds < 0)
+                document.getElementById('countdown' + i).innerHTML = "Wir haben diese Klasse schon seit <b>" + -days + "</b> Tagen bestanden🎉 ";
+            else
+                document.getElementById('countdown' + i).innerHTML = "Wir haben schon <b>" + days + "</b> Tage hinter uns. Das sind " + (percentage(i)) + "% die wir schon geschafft haben!";
+
+
+
+
+        }
+
+        function percentage(i) {
+            let percentage = "" + ((nowInSeconds() - getStartDate(i)) / (getEndDate(i) - getStartDate(i)) * 100)
+
+            for (let j = 0; j < 18 - percentage.length; i++)
+                percentage += "0"
+
+            return percentage
+        }
+        function getStartDate(i) {
+            return Math.round(new Date("September 7, " + (2019 + i - 1) + " 09:00:00").getTime() / 1000);
+        }
+        function getEndDate(i) {
+            return Math.round(new Date("July 7, " + (2019 + i) + " 09:00:00").getTime() / 1000);
+        }
+        function nowInSeconds() {
+            return Math.round(new Date().getTime() / 1000);
+        }
+        let countdownTimers = [
+            setInterval('timer(1)', 1000),
+            setInterval('timer(2)', 1000),
+            setInterval('timer(3)', 1000),
+            setInterval('timer(4)', 1000),
+            setInterval('timer(5)', 1000)
+        ];
+    </script>
+</body>
+
+</html>
