@@ -52,7 +52,7 @@
         function timer(i) {
             let end = getEndDate(i);
             let now = nowInSeconds();
-            const seconds = end - now;
+            const seconds = Math.round((end - now)/1000);
 
             let isCurrentYear = getStartDate(i) < nowInSeconds() && nowInSeconds() < getEndDate(i)
 
@@ -87,20 +87,21 @@
             return percentage
         }
         function getStartDate(i) {
-            return Math.round(new Date("September 7, " + (2019 + i - 1) + " 09:00:00").getTime() / 1000);
+            return Math.round(new Date("September 7, " + (2019 + i - 1) + " 09:00:00").getTime());
         }
         function getEndDate(i) {
-            return Math.round(new Date("July 7, " + (2019 + i) + " 09:00:00").getTime() / 1000);
+            return Math.round(new Date("July 7, " + (2019 + i) + " 09:00:00").getTime());
         }
         function nowInSeconds() {
-            return Math.round(new Date().getTime() / 1000);
+            return Math.round(new Date().getTime());
         }
+        const delay = 50
         let countdownTimers = [
-            setInterval('timer(1)', 1000),
-            setInterval('timer(2)', 1000),
-            setInterval('timer(3)', 1000),
-            setInterval('timer(4)', 1000),
-            setInterval('timer(5)', 1000)
+            setInterval('timer(1)', delay),
+            setInterval('timer(2)', delay),
+            setInterval('timer(3)', delay),
+            setInterval('timer(4)', delay),
+            setInterval('timer(5)', delay)
         ];
     </script>
 </body>
