@@ -1,0 +1,39 @@
+span, p,
+h1, h2, h3, h4, h5, h6 {
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 0;
+}
+
+h1 {
+    font-size: 69px;
+}
+a:link {
+    color: lightblue;
+    text-decoration: none;
+    
+}
+  
+a:visited {
+  color: blueviolet;
+  text-decoration: none;
+}
+  
+a:hover {
+  color: lightblue;
+  text-decoration: underline;
+}
+  
+a:active {
+    color: lightblue;
+  text-decoration: underline;
+}
+
+.title{
+    margin-top: 25%; 
+    margin-bottom: 25%;
+}
+
+.category, .padding{
+    padding: 1%;
+}
+
