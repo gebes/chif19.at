@@ -1,0 +1,61 @@
+#background-right {
+    background-image: url("Pictures/Illustration@2x.png");
+    background-size: 120vh;
+    background-repeat: no-repeat;
+    background-position: right top;
+    position: absolute;
+    top: 2vh;
+    right: 0;
+    min-height: 100%;
+    min-width: 100%;
+    z-index: 0;
+}
+
+header {
+    position: relative;
+    top: 20vh;
+    left: 10vh;
+    max-width: 44vw;
+    h1 {
+        font-size: 5vw;
+        text-transform: uppercase;
+        span {
+            color: #F2994A;
+        }
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    header {
+        max-width: 60vh;
+        left: 10vh;
+        h1 {
+            font-size: 4vw;
+        }
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    #background-right {
+        background-size: 80vh;
+    }
+    header {
+        max-width: 90vh;
+        left: 4vh;
+        h1 {
+            font-size: 7vh;
+        }
+    }
+}
+
+ ::-webkit-scrollbar {
+    width: .6vw;
+}
+
+ ::-webkit-scrollbar-track {
+    background: #4b4b4b;
+}
+
+ ::-webkit-scrollbar-thumb {
+    background: rgb(44, 44, 44);
+}
