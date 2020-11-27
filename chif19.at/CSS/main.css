@@ -3,37 +3,41 @@
   background-size: 120vh;
   background-repeat: no-repeat;
   background-position: right top;
-  position: absolute;
-  top: 2vh;
-  right: 0;
+  position: relative;
+  top: 14%;
   min-height: 100%;
   min-width: 100%;
   z-index: 0;
 }
 
-header {
-  position: relative;
-  top: 20vh;
-  left: 10vh;
+#background-right h1 {
   max-width: 44vw;
-}
-
-header h1 {
+  left: 8vh;
+  position: relative;
+  top: 10vh;
   font-size: 5vw;
   text-transform: uppercase;
 }
 
-header h1 span {
+#background-right h1 span {
   color: #F2994A;
 }
 
 @media only screen and (max-width: 1200px) {
-  header {
-    max-width: 60vh;
-    left: 10vh;
+  #background-right h1 {
+    top: 20vh;
+    max-width: 80%;
+    font-size: 8vh;
   }
-  header h1 {
-    font-size: 4vw;
+  #links a {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  #background-right h1 {
+    max-width: 70%;
+    font-size: 6vw;
   }
 }
 
@@ -41,11 +45,7 @@ header h1 span {
   #background-right {
     background-size: 80vh;
   }
-  header {
-    max-width: 90vh;
-    left: 4vh;
-  }
-  header h1 {
+  #background-right h1 {
     font-size: 7vh;
   }
 }
@@ -60,5 +60,59 @@ header h1 span {
 
 ::-webkit-scrollbar-thumb {
   background: #2c2c2c;
+}
+
+main {
+  z-index: 2;
+  position: relative;
+  -webkit-clip-path: polygon(0 0, 100% 12%, 100% 100%, 0% 100%);
+          clip-path: polygon(0 0, 100% 12%, 100% 100%, 0% 100%);
+  width: 100%;
+  min-height: 60%;
+}
+
+#links {
+  background-color: black;
+  color: #ffffff;
+  padding: 8vh;
+  height: 100%;
+}
+
+#links h1 {
+  font-size: 8vh;
+  margin: 8vh 0;
+}
+
+#links a {
+  display: inline-block;
+  text-align: center;
+  min-width: 32%;
+  min-height: 16vh;
+  color: #a1a1a1;
+  font-size: 5vh;
+  text-decoration: none;
+}
+
+#links a:last-child {
+  min-height: 2vh;
+}
+
+#links a:hover {
+  color: white;
+}
+
+footer {
+  background: #000;
+  position: relative;
+  width: 100%;
+  min-height: 2vh;
+  text-align: right;
+  z-index: 4;
+}
+
+footer p {
+  padding: 0 2vw 2vw 0;
+  color: #3d3d3d;
+  font-size: 2vh;
 }
 /*# sourceMappingURL=main.css.map */
