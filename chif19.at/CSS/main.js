@@ -10,6 +10,6 @@ $(document).scroll(function() {
     $("#chifOrange").css({
         "position": "relative",
         "top": height - height / 5,
-        "opacity": 120 / height
+        "opacity": 120 / height,
     })
 })

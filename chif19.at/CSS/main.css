@@ -92,6 +92,7 @@ main {
   background-color: black;
   color: #ffffff;
   width: 100%;
+  padding-bottom: 4vh;
 }
 
 #links h1 {
@@ -102,11 +103,13 @@ main {
 #links a {
   display: inline-block;
   text-align: center;
-  min-width: 24%;
+  min-width: 24.7%;
   padding: 4vw 0;
   color: #a1a1a1;
   font-size: 5vh;
   text-decoration: none;
+  -webkit-transition: .4s;
+  transition: .4s;
 }
 
 #links a:last-child {
@@ -123,7 +126,6 @@ footer {
   text-align: right;
   background: #000;
   max-width: 100vw;
-  padding-top: 4vh;
 }
 
 footer p {
