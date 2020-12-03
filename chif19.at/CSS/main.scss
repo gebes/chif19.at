@@ -115,14 +115,15 @@ footer {
     background: #000;
     max-width: 100vw;
     font-size: 2vh;
-    
+    top: -2px;
+
     p {
         text-align: right;
         padding: 0 2vw 2vw 0;
         color: rgb(61, 61, 61);
         
         a{
-            padding-right: 2vw; 
+            padding-right: 2vw;     
             color: rgb(61, 61, 61);
             text-decoration: none;
             transition: all .4s;
@@ -131,6 +132,5 @@ footer {
                 color: rgb(104, 104, 104);
             }
         }
-
     }
 }
