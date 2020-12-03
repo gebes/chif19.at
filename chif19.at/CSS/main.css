@@ -122,15 +122,26 @@ main {
 
 footer {
   position: relative;
-  left: 0;
-  text-align: right;
   background: #000;
   max-width: 100vw;
+  font-size: 2vh;
 }
 
 footer p {
+  text-align: right;
   padding: 0 2vw 2vw 0;
   color: #3d3d3d;
-  font-size: 2vh;
+}
+
+footer p a {
+  padding-right: 2vw;
+  color: #3d3d3d;
+  text-decoration: none;
+  -webkit-transition: all .4s;
+  transition: all .4s;
+}
+
+footer p a:hover {
+  color: #686868;
 }
 /*# sourceMappingURL=main.css.map */
