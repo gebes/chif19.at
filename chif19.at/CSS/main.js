@@ -14,9 +14,10 @@ $(document).scroll(function() {
         "opacity": 120 / height
     })
 
-    if(height<=0){
+    if (height <= 0) {
         $("#chifOrange").css({
-            "opacity": 100
+            "opacity": 1,
+            "filter: opacity(": 100 + ")"
         })
     }
 })
