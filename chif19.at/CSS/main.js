@@ -5,18 +5,19 @@ $(document).scroll(function() {
     height = $(window).scrollTop()
 
     $("#chifNormal").css({
-        "opacity": 30 / height
+        "opacity": height <= 0 ? 1 : 30 / height
     })
 
     $("#chifOrange").css({
         "position": "relative",
-        "top": height <= 0 ? 0 : height - height / 5,
-        "opacity": height <= 0 ? 100 : 120 / height
+        "top": height - height / 5,
+        "opacity": 120 / height
     })
 
     if (height <= 0) {
         $("#chifOrange").css({
-            "opacity": 100
+            "opacity": 1,
+            "filter: opacity(": 100 + ")"
         })
     }
 })
