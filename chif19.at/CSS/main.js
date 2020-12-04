@@ -10,14 +10,13 @@ $(document).scroll(function() {
 
     $("#chifOrange").css({
         "position": "relative",
-        "top": height - height / 5,
-        "opacity": 120 / height
+        "top": height <= 0 ? 0 : height - height / 5,
+        "opacity": height <= 0 ? 100 : 120 / height
     })
 
     if (height <= 0) {
         $("#chifOrange").css({
-            "opacity": 1,
-            "filter: opacity(": 100 + ")"
+            "opacity": 100
         })
     }
 })
