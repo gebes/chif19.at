@@ -1,47 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CHIF19</title>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="CSS/main.js"></script>
-
-    <link rel="stylesheet" href="CSS/style.css">
-    <link rel="stylesheet" href="CSS/main.css">
-</head>
-
-<body>
-    <div id="background-right">
-        <header id="heading">
-            <span id="chifOrange"><h1 style="z-index: 5">CHIF19 </h1></span>
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>CHIF19</title>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script src="CSS/main.js"></script>
+      <link rel="stylesheet" href="CSS/style.css">
+      <link rel="stylesheet" href="CSS/main.css">
+   </head>
+   <body >
+      <script>
+         $(document).ready(function(){
+             $.ajax({ url: "https://api.gebes.eu/chif19/links",
+                 context: document.body,
+                 success: function(data){
+                    var links = document.getElementById("links");
+                 
+                    for(let object of data){
+                        if(object["active"] === false)
+                         continue;
+                        console.log(object);
+                        let node = document.createElement("a")
+                        node.innerHTML = object["name"]
+                        node.target = "_blank"
+                        node.href = object["url"]
+                        links.appendChild(node)
+                    }
+         
+                 }});
+         });
+      </script>
+      <div id="background-right">
+         <header id="heading">
+            <span id="chifOrange">
+               <h1 style="z-index: 5">CHIF19 </h1>
+            </span>
             <span id="chifNormal">&nbspDie Klasse, dies kann</span>
-        </header>
-    </div>
-
-    <main>
-        <section id="links">
+         </header>
+      </div>
+      <main>
+         <section id="links">
             <h1>Showcase</h1>
-            <a href="https://progress.chif19.at" target="_blank">Progress </a>
-            <a href="https://stevemct.github.io" target="_blank">Eve</a>
-            <a href="https://timetablebot.xyz/" target="_blank">Time-Table</a>
-            <a href="https://correct-brackets.zgast.at/" target="_blank">Formatter</a>
-            <a href="https://chiflive.com/" target="_blank">Chiflive</a>
-            <a href="https://teams.gebes.eu/" target="_blank">Teams</a>
-            <a href="https://www.debitspace.org/" target="_blank">Debitspace</a>
-            <a href="https://kexika.eu" target="_blank">Kexika</a>
-            <a href="https://matias.ma/nsfw" target="_blank">Trust-me</a>
-            <a href="https://medibot.at/" target="_blank">Medibot</a>
-            <a href="https://sites.chif19.at/bop/" target="_blank">Bop</a>
-        </section>
-    </main>
-
-    <footer> 
-        <p><a href="https://api.gebes.eu/datenschutz/remember">Datenschutz</a> Made by SteveMcT </p>
-    </footer>
-
-</body>
-
+            <!--<a href="https://progress.chif19.at" target="_blank">Progress </a>-->
+         </section>
+      </main>
+      <footer>
+         <p><a href="https://api.gebes.eu/datenschutz/remember">Datenschutz</a> Made by SteveMcT </p>
+      </footer>
+   </body>
 </html>
