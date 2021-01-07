@@ -28,7 +28,7 @@
                     conversion: 1.23
                 },
                 created () {
-                    fetch("http://currencies.apps.grandtrunk.net/getlatest/eur/usd").then(async response => {
+                    fetch("https://currencies.apps.grandtrunk.net/getlatest/eur/usd").then(async response => {
                             app.conversion = parseFloat((await response.json()))
                             app.dollar = app.conversion + ""
 
