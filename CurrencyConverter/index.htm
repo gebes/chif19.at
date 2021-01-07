@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CurrencyConverter</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+    <link rel="stylesheet" href="https://milligram.io/styles/main.css"/>
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+
+        let app;
+
+        window.addEventListener('load', () => {
+
+
+            app = new Vue({
+                el: '#app',
+                data: {
+                    euro: "1",
+                    dollar: "1",
+                    conversion: 1.23
+                },
+                created () {
+                    fetch("http://currencies.apps.grandtrunk.net/getlatest/eur/usd").then(async response => {
+                            app.conversion = parseFloat((await response.json()))
+                            app.dollar = app.conversion + ""
+
+                        }
+                    )
+                },
+                methods: {
+                    changedDollar: (value) => {
+                        app.dollar = document.getElementById("dollar").value
+                        app.euro = (parseFloat(app.dollar) / app.conversion).toFixed(2) + "";
+
+                        if (isNaN(app.euro))
+                            app.euro = "0"
+
+                    },
+                    changedEuro: (value) => {
+                        app.euro = document.getElementById("euro").value
+                        app.dollar = (parseFloat(app.euro) * app.conversion).toFixed(2) + "";
+
+                        if (isNaN(app.dollar))
+                            app.dollar = "0"
+                    },
+
+                }
+            })
+        })
+
+
+    </script>
+    <style>
+        p {
+            margin-top: -15px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div id="app">
+    <main class="wrapper">
+        <nav class="navigation">
+            <section class="container">
+                <a class="navigation-title">
+                    CurrencyConverter
+                </a>
+            </section>
+        </nav>
+
+
+        <section class="container">
+            <br>
+            <p>With the new and powerful technology of Gebes Inc., you can now convert between USD and EUR currency. To
+                make this software even better, we removed all the convert buttons, which results in a more comfortable
+                UX for
+                your TINF Teacher.</p>   <br>
+
+            <form action="javascript: void(0)">
+                <fieldset>
+                    <label for="euro">Euro €</label><input id="euro" type="text" :value="euro" @keyup="changedEuro">
+                    <label for="dollar">Dollar $</label><input id="dollar" type="text" :value="dollar"
+                                                               @keyup="changedDollar">
+                    <!--       <button v-on:click="changedEuro">Convert EUR to USD</button>
+                           <button v-on:click="changedDollar">Convert USD to EUR</button>-->
+                </fieldset>
+            </form>
+            <br>
+
+
+            <h3>Partners</h3>
+            <p>Currency Converter is a vast project. Here a list of all our partners which are making this possible</p>
+            <a href="https://google.com" target="_blank">
+                <button>Google</button>
+            </a>
+            <a href="http://stackoverflow.com/" target="_blank">
+                <button>StackOverflow</button>
+            </a>
+            <br><br><br>
+            <h3>Contact</h3>
+            <p>Build the next Facebook with us. Choose one of the following options.</p>
+            <a href="mailto:mail@gebes.eu">
+                <button>Mail</button>
+            </a>
+            <a target="_blank"
+               href=" https://www.google.com/maps/place/UBS+Gebes+Medeiros/@-3.0405534,-59.9336378,15.75z/data=!4m8!1m2!2m1!1sGebes!3m4!1s0x0:0x4bdbf2d497e55777!8m2!3d-3.041783!4d-59.9304199">
+                <button>Walk to our office</button>
+            </a>
+
+            <br><br><br>
+
+
+            <pre class="code prettyprint lang-html prettyprinted"><code class="code-content">public static void main(String[] args){
+    Person you = new AmazingPerson();
+    you.haveFun();
+}</code></pre>
+        </section>
+    </main>
+</div>
+
+</body>
+
+</html>
