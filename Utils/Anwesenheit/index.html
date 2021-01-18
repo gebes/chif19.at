@@ -39,46 +39,46 @@
                 el: '#app',
                 data: {
                     input: "",
-                    users: [{ name: "DRAXLER", anwesend: false },
-                    { name: "EICHWALD", anwesend: false },
-                    { name: "GRUBER", anwesend: false },
-                    { name: "GUELLY", anwesend: false },
-                    { name: "HUSSLER", anwesend: false },
-                    { name: "KIENDLER", anwesend: false },
-                    { name: "KRASSNIGG", anwesend: false },
-                    { name: "KROPF", anwesend: false },
-                    { name: "KULMER", anwesend: false },
-                    { name: "LACKNER", anwesend: false },
-                    { name: "MALEK", anwesend: false },
-                    { name: "MARTINZ", anwesend: false },
-                    { name: "MENHART", anwesend: false },
-                    { name: "MIKARA", anwesend: false },
-                    { name: "PFINGSTL", anwesend: false },
-                    { name: "PIRKER", anwesend: false },
-                    { name: "PLLANA", anwesend: false },
-                    { name: "PRECHTL", anwesend: false },
-                    { name: "REITBAUER", anwesend: false },
-                    { name: "SAVU", anwesend: false },
-                    { name: "SCHILLINGER", anwesend: false },
-                    { name: "SCHRUTH", anwesend: false },
-                    { name: "SOMMER", anwesend: false },
-                    { name: "STUERZL", anwesend: false },
-                    { name: "SVOBODA", anwesend: false },
-                    { name: "TESCH", anwesend: false },
-                    { name: "THUSWOHL", anwesend: false },
-                    { name: "WEINHANDL", anwesend: false },
-                    { name: "ZIRNGAST", anwesend: false }]
+                    users: [{ id: 1, name: "DRAXLER", anwesend: false },
+                    { id: 2, name: "EICHWALD", anwesend: false },
+                    { id: 3, name: "GRUBER", anwesend: false },
+                    { id: 4, name: "GUELLY", anwesend: false },
+                    { id: 5, name: "HUSSLER", anwesend: false },
+                    { id: 6, name: "KIENDLER", anwesend: false },
+                    { id: 7, name: "KRASSNIGG", anwesend: false },
+                    { id: 8, name: "KROPF", anwesend: false },
+                    { id: 9, name: "KULMER", anwesend: false },
+                    { id: 10, name: "LACKNER", anwesend: false },
+                    { id: 11, name: "MALEK", anwesend: false },
+                    { id: 12, name: "MARTINZ", anwesend: false },
+                    { id: 13, name: "MENHART", anwesend: false },
+                    { id: 14, name: "MIKARA", anwesend: false },
+                    { id: 15, name: "PFINGSTL", anwesend: false },
+                    { id: 16, name: "PIRKER", anwesend: false },
+                    { id: 17, name: "PLLANA", anwesend: false },
+                    { id: 18, name: "PRECHTL", anwesend: false },
+                    { id: 19, name: "REITBAUER", anwesend: false },
+                    { id: 20, name: "SAVU", anwesend: false },
+                    { id: 21, name: "SCHILLINGER", anwesend: false },
+                    { id: 22, name: "SCHRUTH", anwesend: false },
+                    { id: 23, name: "SOMMER", anwesend: false },
+                    { id: 24, name: "STUERZL", anwesend: false },
+                    { id: 25, name: "SVOBODA", anwesend: false },
+                    { id: 26, name: "TESCH", anwesend: false },
+                    { id: 27, name: "THUSWOHL", anwesend: false },
+                    { id: 28, name: "WEINHANDL", anwesend: false },
+                    { id: 29, name: "ZIRNGAST", anwesend: false }]
 
                 },
                 methods: {
                     checkUsers: () => {
                         app.input = document.getElementById("names").value.toLowerCase();
-                
+
                         for (let user of app.users) {
                             user.anwesend = (app.input.includes(user.name.toLowerCase()))
 
                         }
-                        app.users.sort((a,b) => b.anwesend - a.anwesend)
+                        app.users.sort((a, b) => b.anwesend - a.anwesend)
                     },
 
 
@@ -93,7 +93,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
     <link rel="stylesheet" href="https://milligram.io/styles/main.css" />
     <title>CHIF19</title>
-    <script src="https://unpkg.com/vue"></script>    <style>
+    <script src="https://unpkg.com/vue"></script>
+    <style>
         p {
             margin-top: -15px;
         }
@@ -119,27 +120,26 @@
                 <p>In Teams rauszoomen bis man alle Teilnehmer sieht. Teilnehmer markieren und kopieren.</p>
                 <p>Nachdem Einfügen auf "Überprüfen" drücken.</p>
                 <br>
-  
-                <form action="javascript: void(0)">
-                    <fieldset>
-                        <label for="names">Überprüft wer fehlt</label><input id="names" type="text">
-                        <button v-on:click="checkUsers">Überprüfen</button>
-                          
-                    </fieldset>
-                </form>
+
+                <fieldset>
+                    <label for="names">Überprüft wer fehlt</label><input id="names" type="text">
+                    <button v-on:click="checkUsers">Überprüfen</button>
+                </fieldset>
 
                 <table>
                     <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Anwesend</th>
-                    </tr>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Ist anwesend</th>
+                        </tr>
                     </thead>
                     <tbody>
-                    <tr v-for="user in users" :key="user.name">
-                        <td>{{ user.name }}</td>
-                        <td>{{ user.anwesend ? "Anwesend" : "Abwesend"}}</td>
-                    </tr>
+                        <tr v-for="user in users" :key="user.name">
+                            <td>{{ user.id }}</td>
+                            <td>{{ user.name }}</td>
+                            <td>{{ user.anwesend ? "Anwesend" : ""}}</td>
+                        </tr>
                     </tbody>
                 </table>
 
