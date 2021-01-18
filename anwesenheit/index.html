@@ -56,15 +56,40 @@
             }
         }
     </script>
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+    <link rel="stylesheet" href="https://milligram.io/styles/main.css"/>
+    <title>CHIF19</title>
 </head>
 
 <body>
+<div id="app">
+    <main class="wrapper">
+        <nav class="navigation">
+            <section class="container">
+                <a class="navigation-title">
+                    Anwesenheits Checker
+                </a>
+            </section>
+        </nav>
+        
+        <section class="container">
 
     <form name="myForm" action="" onsubmit="return validateForm()" method="post">
-        Überprüft wer fehlt: <input type="text" name="fname">
-        <input type="submit" value="Submit">
+        Überprüft wer fehlt <input type="text" name="fname">
+        <input type="submit" value="Überprüfen">
     </form>
 
+        <h3>Wie verwenden?</h3>
+        <p>In Teams rauszoomen bis man alle Teilnehmer sieht. Teilnehmer markieren und kopieren.</p>
+        <p>Nachdem Einfügen auf "Überprüfen" drücken.</p>
+        
+
+       </section>
+    </main>
+</div>
 </body>
 
 </html>
