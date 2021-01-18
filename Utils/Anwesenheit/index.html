@@ -5,39 +5,11 @@
     <meta charset="UTF-8">
     <script>
 
-        var names = ["DRAXLER",
-            "EICHWALD",
-            "GRUBER",
-            "GUELLY",
-            "HUSSLER",
-            "KIENDLER",
-            "KRASSNIGG",
-            "KROPF",
-            "KULMER",
-            "LACKNER",
-            "MALEK",
-            "MARTINZ",
-            "MENHART",
-            "MIKARA",
-            "PFINGSTL",
-            "PIRKER",
-            "PLLANA",
-            "PRECHTL",
-            "REITBAUER",
-            "SAVU",
-            "SCHILLINGER",
-            "SCHRUTH",
-            "SOMMER",
-            "STUERZL",
-            "SVOBODA",
-            "TESCH",
-            "THUSWOHL",
-            "WEINHANDL",
-            "ZIRNGAST"]
+        let app;
 
         function validateForm() {
             var x = document.forms["myForm"]["fname"].value;
-            if (x == "") {
+            /* if (x == "") {
                 alert("Name must be filled out");
                 return false;
             } else {
@@ -53,43 +25,129 @@
                 else
                     alert("Es fehlen: " + missing +" aber dafür sind " + (names.length-missing.length) + " da")
                 return false;
-            }
+
+            }*/
+            app.checkUsers(x)
+            return false;
         }
+
+
+        window.addEventListener('load', () => {
+
+
+            app = new Vue({
+                el: '#app',
+                data: {
+                    input: "",
+                    users: [{ name: "DRAXLER", anwesend: false },
+                    { name: "EICHWALD", anwesend: false },
+                    { name: "GRUBER", anwesend: false },
+                    { name: "GUELLY", anwesend: false },
+                    { name: "HUSSLER", anwesend: false },
+                    { name: "KIENDLER", anwesend: false },
+                    { name: "KRASSNIGG", anwesend: false },
+                    { name: "KROPF", anwesend: false },
+                    { name: "KULMER", anwesend: false },
+                    { name: "LACKNER", anwesend: false },
+                    { name: "MALEK", anwesend: false },
+                    { name: "MARTINZ", anwesend: false },
+                    { name: "MENHART", anwesend: false },
+                    { name: "MIKARA", anwesend: false },
+                    { name: "PFINGSTL", anwesend: false },
+                    { name: "PIRKER", anwesend: false },
+                    { name: "PLLANA", anwesend: false },
+                    { name: "PRECHTL", anwesend: false },
+                    { name: "REITBAUER", anwesend: false },
+                    { name: "SAVU", anwesend: false },
+                    { name: "SCHILLINGER", anwesend: false },
+                    { name: "SCHRUTH", anwesend: false },
+                    { name: "SOMMER", anwesend: false },
+                    { name: "STUERZL", anwesend: false },
+                    { name: "SVOBODA", anwesend: false },
+                    { name: "TESCH", anwesend: false },
+                    { name: "THUSWOHL", anwesend: false },
+                    { name: "WEINHANDL", anwesend: false },
+                    { name: "ZIRNGAST", anwesend: false }]
+
+                },
+                methods: {
+                    checkUsers: () => {
+                        app.input = document.getElementById("names").value.toLowerCase();
+                
+                        for (let user of app.users) {
+                            user.anwesend = (app.input.includes(user.name.toLowerCase()))
+
+                        }
+                        app.users.sort((a,b) => b.anwesend - a.anwesend)
+                    },
+
+
+                }
+            })
+        })
+
     </script>
-    
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
-    <link rel="stylesheet" href="https://milligram.io/styles/main.css"/>
+    <link rel="stylesheet" href="https://milligram.io/styles/main.css" />
     <title>CHIF19</title>
+    <script src="https://unpkg.com/vue"></script>    <style>
+        p {
+            margin-top: -15px;
+        }
+    </style>
+
 </head>
 
 <body>
-<div id="app">
-    <main class="wrapper">
-        <nav class="navigation">
+    <div id="app">
+        <main class="wrapper">
+            <nav class="navigation">
+                <section class="container">
+                    <a class="navigation-title">
+                        Anwesenheits Checker
+                    </a>
+                </section>
+            </nav>
+
             <section class="container">
-                <a class="navigation-title">
-                    Anwesenheits Checker
-                </a>
+
+
+                <h3>Wie verwenden?</h3>
+                <p>In Teams rauszoomen bis man alle Teilnehmer sieht. Teilnehmer markieren und kopieren.</p>
+                <p>Nachdem Einfügen auf "Überprüfen" drücken.</p>
+                <br>
+  
+                <form action="javascript: void(0)">
+                    <fieldset>
+                        <label for="names">Überprüft wer fehlt</label><input id="names" type="text">
+                        <button v-on:click="checkUsers">Überprüfen</button>
+                          
+                    </fieldset>
+                </form>
+
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Anwesend</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr v-for="user in users" :key="user.name">
+                        <td>{{ user.name }}</td>
+                        <td>{{ user.anwesend ? "Anwesend" : "Abwesend"}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+
+
             </section>
-        </nav>
-        
-        <section class="container">
-
-    <form name="myForm" action="" onsubmit="return validateForm()" method="post">
-        Überprüft wer fehlt <input type="text" name="fname">
-        <input type="submit" value="Überprüfen">
-    </form>
-
-        <h3>Wie verwenden?</h3>
-        <p>In Teams rauszoomen bis man alle Teilnehmer sieht. Teilnehmer markieren und kopieren.</p>
-        <p>Nachdem Einfügen auf "Überprüfen" drücken.</p>
-        
-
-       </section>
-    </main>
-</div>
+        </main>
+    </div>
 </body>
 
 </html>
