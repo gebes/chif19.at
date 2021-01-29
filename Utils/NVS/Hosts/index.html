@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <script>
+
+        function validateForm() {
+            return false;
+        }
+
+
+        window.addEventListener('load', () => {
+
+
+            app = new Vue({
+                el: '#app',
+                data: {
+                   hosts: "0 Hosts"
+                },
+                methods: {
+                    calcHosts: () => {
+                        try{
+                            let input = document.getElementById("names").value;
+                            app.hosts = Math.pow(2, 32- input.split("/")[1])-2 + " Hosts";
+                        }catch(e){
+                            console.log(e);
+                            app.hosts = "Fehler"
+                        }
+                    },
+
+
+                }
+            })
+        })
+
+    </script>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+    <link rel="stylesheet" href="https://milligram.io/styles/main.css" />
+    <title>CHIF19</title>
+    <script src="https://unpkg.com/vue"></script>
+    <style>
+        p {
+            margin-top: -15px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="app">
+        <main class="wrapper">
+            <nav class="navigation">
+                <section class="container">
+                    <a class="navigation-title">
+                        Hosts Calculator
+                    </a>
+                </section>
+            </nav>
+
+            <section class="container">
+
+
+                <br>
+
+                <fieldset>
+                    <label>IP Adresse eingeben</label><input id="names" type="text" value="192.168.0.1/24">
+                    <button v-on:click="calcHosts">Berechnen</button>
+                </fieldset>
+
+                <h1>{{ hosts }}</h1>
+
+
+
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>
